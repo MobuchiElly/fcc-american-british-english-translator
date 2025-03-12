@@ -17,7 +17,7 @@ const translateHandler = async () => {
     body: JSON.stringify({"text": textArea.value, "locale": localeArea.value})
   });
 
-  const parsed = await data.json();
+  const parsed = await data.json(); console.log("parsed:", parsed);
   if (parsed.error) {
     errorArea.innerText = JSON.stringify(parsed);
     return;
