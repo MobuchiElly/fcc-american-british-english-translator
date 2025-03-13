@@ -32,7 +32,7 @@ class Translator {
         if (locale == "british-to-american"){
             const britishToAmericanSpelling = this.reverseObj(americanToBritishSpelling);
             const britishToAmericanTitles = this.reverseObj(americanToBritishTitles);
-            const britishDict = this.combineObjs(britishOnly, britishToAmericanSpelling, britishToAmericanTitles)
+            const britishDict = this.combineObjs(britishOnly, britishToAmericanSpelling, britishToAmericanTitles);  console.log(britishDict);
             for (const [key, value] of Object.entries(britishDict)){
                 let regex = new RegExp(`\\b${key}\\b`, `gi`);
                 translation = translation.replace(regex, `<span class="highlight">${value}</span>`);
@@ -50,12 +50,12 @@ class Translator {
         
         for (const [key, value] of Object.entries(obj2)) combinedDict[key] = value;
 
-        for (const [key, value] of Object.entries(obj3)) combinedDict[key] = value;
+        for (const [key, value] of Object.entries(obj3)) combinedDict[key.charAt(0).toUpperCase() + key.slice(1)] = value.charAt(0).toUpperCase() + value.slice(1);
 
         return combinedDict;
     }
     reverseObj(obj){
-        let reversedObj = {};    
+        let reversedObj = {};
         for (let [key, value] of Object.entries(obj)) reversedObj[value] = key;
         return reversedObj;
     }

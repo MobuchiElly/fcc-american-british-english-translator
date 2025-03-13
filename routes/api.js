@@ -21,6 +21,6 @@ module.exports = function (app) {
 
       //shpuld handle time translation as well
       let favourite = "hey"
-      return res.status(201).json({ 'text': 'testing text', translation });
+      return res.status(201).json({ text, translation });
     });
 };
